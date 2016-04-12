@@ -2,7 +2,7 @@
 
 require_once '../framework/configuration.php';
 
-abstract class Modele {
+abstract class Dao {
 
     /** Objet PDO d'accès à la BD
     Statique donc partagé par toutes les instances des classes dérivées */
