@@ -105,4 +105,24 @@ class JourneesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function competitions()
+    {
+        // La clé 'pass' est fournie par CakePHP et contient tous les segments
+        // d'URL de la "request" (instance de \Cake\Network\Request)
+        $competitions = $this->request->params['pass'];
+
+        // On utilise l'objet "Bookmarks" (une instance de
+        // \App\Model\Table\BookmarksTable) pour récupérer les bookmarks avec
+        // ces tags
+        $journees = $this->Journees->find('competitions', [
+            'competitions' => $competitions
+        ]);
+
+        // Passe les variables au template de vue (view).
+        $this->set([
+            'journees' => $journees,
+            'competitions' => $competitions
+        ]);
+    }
 }

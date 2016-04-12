@@ -27,6 +27,10 @@ class StadesTable extends Table
         $this->table('stades');
         $this->displayField('id');
         $this->primaryKey('id');
+
+        $this->belongsTo('Equipes', [
+            'foreignKey' => 'Equipe_idEquipe',
+        ]);
     }
 
     /**

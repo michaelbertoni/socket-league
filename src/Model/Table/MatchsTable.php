@@ -27,6 +27,18 @@ class MatchsTable extends Table
         $this->table('matchs');
         $this->displayField('id');
         $this->primaryKey('id');
+
+        $this->belongsTo('Equipes', [
+            'foreignKey' => 'EquipeDomicile_idEquipe'
+        ]);
+
+        $this->belongsTo('Equipes', [
+            'foreignKey' => 'EquipeVisiteur_idEquipe'
+        ]);
+
+        $this->belongsTo('Journees', [
+            'foreignKey' => 'Journée_idJournée'
+        ]);
     }
 
     /**

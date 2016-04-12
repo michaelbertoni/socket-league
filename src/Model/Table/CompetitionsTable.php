@@ -30,9 +30,14 @@ class CompetitionsTable extends Table
         $this->primaryKey('id');
 
         $this->belongsToMany('Equipes', [
-            'foreignKey' => 'competition_id',
-            'targetForeignKey' => 'equipe_id',
+            'foreignKey' => 'Equipe_idEquipe',
+            'targetForeignKey' => 'Competition_idCompetition',
             'joinTable' => 'equipes_competitions'
+        ]);
+
+        $this->hasMany('Journees', [
+                'foreignKey' => 'Competition_idCompetition',
+                'dependent' => true,
         ]);
     }
 

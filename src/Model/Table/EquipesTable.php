@@ -30,10 +30,23 @@ class EquipesTable extends Table
         $this->primaryKey('id');
 
         $this->belongsToMany('Competitions', [
-            'foreignKey' => 'equipe_id',
-            'targetForeignKey' => 'competition_id',
+            'foreignKey' => 'Equipe_idEquipe',
+            'targetForeignKey' => 'Competition_idCompetition',
             'joinTable' => 'equipes_competitions'
         ]);
+
+        $this->hasOne('Stades', [
+            'foreignKey' => 'Equipe_idEquipe',
+        ]);
+
+        $this->hasMany('Matchs', [
+            'foreignKey' => 'EquipeDomicile_idEquipe',
+        ]);
+
+        $this->hasMany('Matchs', [
+            'foreignKey' => 'EquipeVisiteur_idEquipe',
+        ]);
+
     }
 
     /**
