@@ -75,5 +75,26 @@
             <?php endforeach; ?>
         </table>
         <?php endif; ?>
+        <h4><?= __('Related Journes') ?></h4>
+        <?php if (!empty($competition->journees)): ?>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th><?= __('Id') ?></th>
+                <th><?= __('nomJournée') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php foreach ($competition->journees as $journees): ?>
+            <tr>
+                <td><?= h($journees->id) ?></td>
+                <td><?= h($journees->nomJournée) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['controller' => 'Journees', 'action' => 'view', $journees->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['controller' => 'Journees', 'action' => 'edit', $journees->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'journees', 'action' => 'delete', $journees->id], ['confirm' => __('Are you sure you want to delete # {0}?', $journees->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif; ?>
     </div>
 </div>

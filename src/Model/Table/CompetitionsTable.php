@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
  * Competitions Model
  *
  * @property \Cake\ORM\Association\BelongsToMany $Equipes
+ * @property \Cake\ORM\Association\hasMany $Journees
  */
 class CompetitionsTable extends Table
 {
