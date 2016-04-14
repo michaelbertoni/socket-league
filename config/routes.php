@@ -74,16 +74,16 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks('DashedRoute');
 });
 
-// Nouvelle route ajoutée pour notre action "tagged".
+/*// Nouvelle route ajoutée pour notre action "tagged".
 // Le caractère `*` en fin de chaîne indique à CakePHP que cette action a
 // des paramètres passés
 Router::scope(
-    '/journees',
-    ['controller' => 'Journees'],
+    '/competition',
+    ['controller' => 'competition'],
     function ($routes) {
-        $routes->connect('/competition/*', ['action' => 'competitions']);
+        $routes->connect('/competition/*', ['action' => 'resultats']);
     }
-);
+);*/
 
 /**
  * Load all plugin routes.  See the Plugin documentation on

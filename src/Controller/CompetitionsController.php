@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Competitions Controller
@@ -106,5 +107,35 @@ class CompetitionsController extends AppController
             $this->Flash->error(__('The competition could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function resultats($id = null)
+    {
+/*        // La clé 'pass' est fournie par CakePHP et contient tous les segments
+        // d'URL de la "request" (instance de \Cake\Network\Request)
+        $competitions = $this->request->params['pass'];*/
+
+        $competition = $this->Competitions->get($id);
+
+        $journeeCompetition = $this->Competitions->Journees->find()
+            ->where(['Competition_idCompetition' => $id])
+            ->order(['id' => 'DESC'])
+            ->first();
+
+        $conn = ConnectionManager::get('default');
+        $matchsJournee = $conn->query('SELECT m.id,m.dateMatch,a.nomEquipe as equipeDomicile,m.scoreEquipeDomicile as scoreDomicile,
+            b.nomEquipe as equipeVisiteur,m.scoreEquipeVisiteur as scoreVisiteur
+            FROM matchs m
+            inner join equipes a on m.EquipeDomicile_idEquipe = a.id
+            inner join equipes b on m.EquipeVisiteur_idEquipe = b.id
+            inner join journees j on m.Journée_idJournée = j.id
+            inner join competitions c on j.Competition_idCompetition = c.id
+            where c.id = '.$id.' and j.id = '.$journeeCompetition->id.'');
+
+        $this->set([
+            'journee' => $journeeCompetition,
+            'competition' => $competition,
+            'matchs' => $matchsJournee
+        ]);
     }
 }
