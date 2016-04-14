@@ -7,6 +7,8 @@
         <li><?= $this->Html->link(__('New Competition'), ['action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Equipes'), ['controller' => 'Equipes', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Equipe'), ['controller' => 'Equipes', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Journees'), ['controller' => 'Journees', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Journee'), ['controller' => 'Journees', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="competitions view large-9 medium-8 columns content">
@@ -90,7 +92,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Journees', 'action' => 'view', $journees->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Journees', 'action' => 'edit', $journees->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'journees', 'action' => 'delete', $journees->id], ['confirm' => __('Are you sure you want to delete # {0}?', $journees->id)]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Journees', 'action' => 'delete', $journees->id], ['confirm' => __('Are you sure you want to delete # {0}?', $journees->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

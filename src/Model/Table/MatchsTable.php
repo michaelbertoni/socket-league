@@ -37,7 +37,7 @@ class MatchsTable extends Table
         ]);
 
         $this->belongsTo('Journees', [
-            'foreignKey' => 'Journée_idJournée'
+            'foreignKey' => 'Journee_idJournee'
         ]);
     }
 
