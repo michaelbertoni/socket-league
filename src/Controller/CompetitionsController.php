@@ -123,8 +123,8 @@ class CompetitionsController extends AppController
             ->first();
 
         $conn = ConnectionManager::get('default');
-        $matchsJournee = $conn->query('SELECT m.id,m.dateMatch,a.nomEquipe as equipeDomicile,m.scoreEquipeDomicile as scoreDomicile,
-            b.nomEquipe as equipeVisiteur,m.scoreEquipeVisiteur as scoreVisiteur
+        $matchsJournee = $conn->query('SELECT m.id,m.dateMatch,a.nomCourt as equipeDomicile,m.scoreEquipeDomicile as scoreDomicile,
+            b.nomCourt as equipeVisiteur,m.scoreEquipeVisiteur as scoreVisiteur
             FROM matchs m
             inner join equipes a on m.EquipeDomicile_idEquipe = a.id
             inner join equipes b on m.EquipeVisiteur_idEquipe = b.id
