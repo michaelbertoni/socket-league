@@ -75,7 +75,7 @@
             <?php endforeach; ?>
         </table>
         <?php endif; ?>
-        <h4><?= __('Related Journes') ?></h4>
+        <h4><?= __('Related Journées') ?></h4>
         <?php if (!empty($competition->journees)): ?>
         <table cellpadding="0" cellspacing="0">
             <tr>
