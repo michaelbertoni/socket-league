@@ -34,7 +34,7 @@ class JourneesController extends AppController
     public function view($id = null)
     {
         $journee = $this->Journees->get($id, [
-            'contain' => []
+            'contain' => ['Matchs']
         ]);
 
         $this->set('journee', $journee);

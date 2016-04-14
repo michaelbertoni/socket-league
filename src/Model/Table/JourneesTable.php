@@ -33,7 +33,7 @@ class JourneesTable extends Table
         ]);
 
         $this->hasMany('Matchs', [
-            'foreignKey' => 'Journee_idJournee',
+            'foreignKey' => 'Journée_idJournée',
         ]);
     }
 
