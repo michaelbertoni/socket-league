@@ -138,6 +138,8 @@ class JourneesController extends AppController
                         'scoreDomicile' => 'Matchs.scoreEquipeDomicile',
                         'equipeVisiteur' => 'Visiteur.nomCourt',
                         'scoreVisiteur' => 'Matchs.scoreEquipeVisiteur',
+                        'logoDomicile' => 'Domicile.nomImgLogo',
+                        'logoVisiteur' => 'Visiteur.nomImgLogo'
                     ])
                 ->join([
                         'table' => 'equipes',
