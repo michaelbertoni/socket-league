@@ -180,9 +180,23 @@ class CompetitionsController extends AppController
             $equipe->pointsCompetition = $equipe->matchsGagnes*3 + $equipe->matchsNuls;
         }
 
+        usort($competition->equipes, array($this, 'cmp'));
 
         $this->set([
-            'competition' => $competition,
+            'competition' => $competition
         ]);
+    }
+
+    function cmp($a, $b)
+    {
+        if($a->pointsCompetition == $b->pointsCompetition)
+        {
+            if ($a->differenceBut == $b->differenceBut)
+            {
+                return ($a->butsPour < $b->butsPour) ? 1 : -1;
+            }
+            return ($a->differenceBut < $b->differenceBut) ? 1 : -1;
+        }
+        return ($a->pointsCompetition < $b->pointsCompetition) ? 1 : -1;
     }
 }
