@@ -13,10 +13,14 @@ var_dump($matchs);*/-->
                 <div class="col-xs-6">
                     <div class="panel panel-default">
                         <div class="panel-heading"><?= h($match['dateMatch']->nice('Europe/Paris', 'fr-FR')); ?></div>
-                        <div class="panel-body">
-                            <?= h($match['equipeDomicile']) ?> : <?= h($match['scoreDomicile']) ?><br>
-                            <?= h($match['equipeVisiteur']) ?> : <?= h($match['scoreVisiteur']) ?>
-                        </div>
+                            <?php echo 
+                            $this->Html->link(
+                                $this->Html->div('panel-body',
+                                    '<p>'.h($match['equipeDomicile']).' : '.h($match['scoreDomicile']).'</p>
+                                    <p>'.h($match['equipeVisiteur']).' : '.h($match['scoreVisiteur']).'</p>',
+                                    ['id' => 'match'.$match->id.'']),
+                            ['controller' => 'Matchs', 'action' => 'view', $match->id],
+                            ['escape' => false]); ?>
                     </div>
                 </div>
                 <?php
