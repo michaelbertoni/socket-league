@@ -75,6 +75,8 @@ Router::scope('/', function (RouteBuilder $routes) {
 });
 Router::connect('/competition/*', ['controller' => 'Competitions', 'action' => 'lastJournee']);
 Router::connect('/journee/*', ['controller' => 'Journees', 'action' => 'resultats']);
+Router::connect('/classement/*', ['controller' => 'Competitions', 'action' => 'classement']);
+
 
 /*// Nouvelle route ajoutée pour notre action "tagged".
 // Le caractère `*` en fin de chaîne indique à CakePHP que cette action a
