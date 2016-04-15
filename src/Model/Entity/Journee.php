@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $nomJournée
+ * @property int $numOrdreJournee
  * @property int $Competition_idCompetition
  */
 class Journee extends Entity

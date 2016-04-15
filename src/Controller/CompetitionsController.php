@@ -109,46 +109,10 @@ class CompetitionsController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function resultats($id = null)
+    public function lastJournee($id = null)
     {
-/*        // La clé 'pass' est fournie par CakePHP et contient tous les segments
-        // d'URL de la "request" (instance de \Cake\Network\Request)
-        $competitions = $this->request->params['pass'];*/
-
-        $competition = $this->Competitions->get($id);
-
-        $journeeCompetition = $this->Competitions->Journees->find()
-            ->where(['Competition_idCompetition' => $id])
-            ->order(['id' => 'DESC'])
-            ->first();
-
-        $matchsJournee = $this->Competitions->Journees->Matchs->find()
-                ->select([
-                        'id' => 'Matchs.id',
-                        'dateMatch' => 'Matchs.dateMatch',
-                        'equipeDomicile' => 'Domicile.nomCourt',
-                        'scoreDomicile' => 'Matchs.scoreEquipeDomicile',
-                        'equipeVisiteur' => 'Visiteur.nomCourt',
-                        'scoreVisiteur' => 'Matchs.scoreEquipeVisiteur',
-                    ])
-                ->join([
-                        'table' => 'equipes',
-                        'alias' => 'Domicile',
-                        'type' => 'INNER',
-                        'conditions' => 'Matchs.EquipeDomicile_idEquipe = Domicile.id',
-                    ])
-                ->join([
-                        'table' => 'equipes',
-                        'alias' => 'Visiteur',
-                        'type' => 'INNER',
-                        'conditions' => 'Matchs.EquipeVisiteur_idEquipe = Visiteur.id',
-                    ])
-                ->where(['Journée_idJournée' => $journeeCompetition->id]);
-
-        $this->set([
-            'journee' => $journeeCompetition,
-            'competition' => $competition,
-            'matchs' => $matchsJournee
-        ]);
+        $this->redirect(
+            ['controller' => 'Journees', 'action' => 'resultatsFromCompetition', $id]
+        );
     }
 }

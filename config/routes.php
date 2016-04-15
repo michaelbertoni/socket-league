@@ -73,6 +73,8 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->fallbacks('DashedRoute');
 });
+Router::connect('/competition/*', ['controller' => 'Competitions', 'action' => 'lastJournee']);
+Router::connect('/journee/*', ['controller' => 'Journees', 'action' => 'resultats']);
 
 /*// Nouvelle route ajoutée pour notre action "tagged".
 // Le caractère `*` en fin de chaîne indique à CakePHP que cette action a
