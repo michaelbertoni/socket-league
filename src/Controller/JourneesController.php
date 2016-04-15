@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Journees Controller
@@ -158,12 +159,21 @@ class JourneesController extends AppController
         $journeesCompetition = $this->Journees->find()
             ->where(['Competition_idCompetition' => $competition->id]);
 
+        $connection = ConnectionManager::get('default');
+        $journeeNext = $connection->execute('SELECT id FROM journees
+        WHERE `numOrdreJournee` > '.$journee->numOrdreJournee.' ORDER BY `numOrdreJournee` ASC LIMIT 1')->fetch('assoc');
+
+        $journeePrev = $connection->execute('SELECT id FROM journees
+        WHERE `numOrdreJournee` < '.$journee->numOrdreJournee.' ORDER BY `numOrdreJournee` DESC LIMIT 1')->fetch('assoc');
+
         // Passage à la vue des paramètres
         $this->set([
             'journee' => $journee,
             'competition' => $competition,
             'matchs' => $matchsJournee,
             'journeesCompetition' => $journeesCompetition,
+            'idJourneePrev' => $journeePrev,
+            'idJourneeNext' => $journeeNext
         ]);
     }
 }

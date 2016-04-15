@@ -2,29 +2,26 @@
     <h1><?= h($competition->nomCompetition) ?></h1>
     <h2><?= h($journee->nomJournée) ?><h2>
 
-            <div id="navigator" class="frame">
-                    <ul class="slidee">
-                        <li>
-                          <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                          </a>
-                        </li>
+            <div class="btn-group" role="group">
+                <a href="<?php echo $idJourneePrev['id']; ?>"" class="btn btn-default"><span aria-hidden="true">&laquo;</span></a>
 
-                        <?php foreach ($journeesCompetition as $journ): ?>
-                            <li><a href=<?php echo "'$journ->id'" ?>><?php echo $journ->nomJournée; ?></a></li>
-                        <?php endforeach; ?>
+                <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Journées de la compétition <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <?php foreach ($journeesCompetition as $journ): ?>
+                                    <li><a href=<?php echo "'$journ->id'" ?>><?php echo $journ->nomJournée; ?></a></li>
+                                <?php endforeach; ?>
+                            </ul>
+                </div>
 
-                        <li>
-                          <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                          </a>
-                        </li>
-                      </ul>
+                <a href="<?php echo $idJourneeNext['id']; ?>"" class="btn btn-default"><span aria-hidden="true">&raquo;</span></a>
             </div>
 
             <?php $i = 0; ?>
             
-            <div class="row">
+            <div class="row" style="padding-top: 10px">
             <?php foreach ($matchs as $match): ?>
                 <div class="col-xs-6">
                     <div class="panel panel-default">
@@ -46,11 +43,3 @@
                 endforeach; ?>
             </div>
 </div>
-
-
-<script>
-$(document).ready(function() {
-
-    $('.frame').sly();
-});
-</script>
