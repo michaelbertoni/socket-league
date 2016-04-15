@@ -115,4 +115,74 @@ class CompetitionsController extends AppController
             ['controller' => 'Journees', 'action' => 'resultatsFromCompetition', $id]
         );
     }
+
+    public function classement($id = null)
+    {
+        $competition = $this->Competitions->get($id, [
+            'contain' => ['Equipes.Matchs']
+        ]);
+
+        foreach ($competition->equipes as $equipe) {
+            $equipe->butsPour = 0;
+            $equipe->butsContre = 0;
+            $equipe->matchsJoues = 0;
+            $equipe->matchsGagnes = 0;
+            $equipe->matchsPerdus = 0;
+            $equipe->matchsNuls = 0;
+            foreach ($equipe->matchs as $match) {
+
+                // Si l'équipe joue à domicile
+                if ($match->EquipeDomicile_idEquipe == $equipe->id) {
+
+                    $equipe->matchsJoues++;
+
+                    // victoire
+                    if ($match->scoreEquipeDomicile > $match->scoreEquipeVisiteur) {
+                        $equipe->butsPour = $equipe->butsPour + $match->scoreEquipeDomicile;
+                        $equipe->butsContre = $equipe->butsContre + $match->scoreEquipeVisiteur;
+                        $equipe->matchsGagnes++;
+                    // défaite
+                    } elseif ($match->scoreEquipeDomicile < $match->scoreEquipeVisiteur)  {
+                        $equipe->butsPour = $equipe->butsPour + $match->scoreEquipeDomicile;
+                        $equipe->butsContre = $equipe->butsContre + $match->scoreEquipeVisiteur;
+                        $equipe->matchsPerdus++;
+                    // match nul
+                    } else {
+                        $equipe->butsPour = $equipe->butsPour + $match->scoreEquipeDomicile;
+                        $equipe->butsContre = $equipe->butsContre + $match->scoreEquipeVisiteur;
+                        $equipe->matchsNuls++;
+                    }
+
+                // Si l'équipe joue à l'extérieur
+                } elseif ($match->EquipeVisiteur_idEquipe == $equipe->id) {
+
+                    $equipe->matchsJoues++;
+
+                    // défaite
+                    if ($match->scoreEquipeDomicile > $match->scoreEquipeVisiteur) {
+                        $equipe->butsPour = $equipe->butsPour + $match->scoreEquipeVisiteur;
+                        $equipe->butsContre = $equipe->butsContre + $match->scoreEquipeDomicile;
+                        $equipe->matchsPerdus++;
+                    // victoire
+                    } elseif ($match->scoreEquipeDomicile < $match->scoreEquipeVisiteur)  {
+                        $equipe->butsPour = $equipe->butsPour + $match->scoreEquipeVisiteur;
+                        $equipe->butsContre = $equipe->butsContre + $match->scoreEquipeDomicile;
+                        $equipe->matchsGagnes++;
+                    // match nul
+                    } else {
+                        $equipe->butsPour = $equipe->butsPour + $match->scoreEquipeVisiteur;
+                        $equipe->butsContre = $equipe->butsContre + $match->scoreEquipeDomicile;
+                        $equipe->matchsNuls++;
+                    }
+                }
+            }
+            $equipe->differenceBut = $equipe->butsPour - $equipe->butsContre;
+            $equipe->pointsCompetition = $equipe->matchsGagnes*3 + $equipe->matchsNuls;
+        }
+
+
+        $this->set([
+            'competition' => $competition,
+        ]);
+    }
 }
