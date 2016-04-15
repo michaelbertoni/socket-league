@@ -52,6 +52,10 @@ class JourneesTable extends Table
         $validator
             ->allowEmpty('nomJournée');
 
+
+        $validator
+            ->integer('numOrdreJournee');
+
         $validator
             ->integer('Competition_idCompetition')
             ->requirePresence('Competition_idCompetition', 'create')
@@ -59,4 +63,6 @@ class JourneesTable extends Table
 
         return $validator;
     }
+
+    
 }
