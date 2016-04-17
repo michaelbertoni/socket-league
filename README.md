@@ -6,9 +6,10 @@
 
 Ajouter l'alias Apache :
 
-```Alias /socketleague "c:/<<REPERTOIRE_GIT_CLONE>>/"
+```
+Alias /socketleague "c:/REPERTOIRE_GIT_CLONE/"
 
-     <Directory "c:/<<REPERTOIRE_GIT_CLONE>>/">
+    <Directory "c:/REPERTOIRE_GIT_CLONE/">
          Options FollowSymLinks
          AllowOverride All
          Require all granted
@@ -18,5 +19,5 @@ Ajouter l'alias Apache :
          RewriteCond %{REQUEST_FILENAME} !-f
          RewriteRule ^ index.php [QSA,L]
 
-     </Directory>
+	</Directory>
 ```
