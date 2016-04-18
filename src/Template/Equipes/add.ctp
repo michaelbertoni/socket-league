@@ -1,24 +1,27 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Equipes'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Competitions'), ['controller' => 'Competitions', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Competition'), ['controller' => 'Competitions', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="equipes form large-9 medium-8 columns content">
-    <?= $this->Form->create($equipe) ?>
-    <fieldset>
-        <legend><?= __('Add Equipe') ?></legend>
-        <?php
-            echo $this->Form->input('nomEquipe');
-            echo $this->Form->input('nomCourt');
-            echo $this->Form->input('presidentEquipe');
-            echo $this->Form->input('dateFondationEquipe');
-            echo $this->Form->input('entraineurEquipe');
-            echo $this->Form->input('competitions._ids', ['options' => $competitions]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<div class="row">
+    <div class="col-sm-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="heading"><?= __('Actions') ?></li>
+            <li><?= $this->Html->link(__('List Equipes'), ['action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('List Competitions'), ['controller' => 'Competitions', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('New Competition'), ['controller' => 'Competitions', 'action' => 'add']) ?></li>
+        </ul>
+    </div>
+    <div class="col-sm-6 main">
+        <?= $this->Form->create($equipe) ?>
+        <fieldset>
+            <legend><?= __('Add Equipe') ?></legend>
+            <?php
+                echo $this->Form->input('nomEquipe', array('class' => 'form-control'));
+                echo $this->Form->input('nomCourt', array('class' => 'form-control'));
+                echo $this->Form->input('presidentEquipe', array('class' => 'form-control'));
+                echo $this->Form->input('dateFondationEquipe', array('class' => 'form-control'));
+                echo $this->Form->input('entraineurEquipe', array('class' => 'form-control'));
+                echo $this->Form->label('competitions._ids');
+                echo $this->Form->select('competitions._ids', $competitions, array('class' => 'form-control', 'multiple' => 'true', 'style' => 'width: 8%'));
+            ?>
+        </fieldset>
+        <?= $this->Form->button(__('Submit'), array('class' => 'btn btn-default', 'style' => "margin-top: 30px")) ?>
+        <?= $this->Form->end() ?>
+    </div>
 </div>

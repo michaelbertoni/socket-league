@@ -54,7 +54,18 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
+            <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Back-Office<span class="caret" style="margin-left: 5px"></span></a>
+          <ul class="dropdown-menu">
+            <li><?php echo $this->Html->link('Equipes',array ('controller' => 'Equipes','action' => 'index')); ?></li>
+            <li><?php echo $this->Html->link('Stades',array ('controller' => 'Stades','action' => 'index')); ?></li>
+            <li><?php echo $this->Html->link('Competitions',array ('controller' => 'Competitions','action' => 'index')); ?></li>
+            <li><?php echo $this->Html->link('Journees',array ('controller' => 'Journees','action' => 'index')); ?></li>
+            <li><?php echo $this->Html->link('Matchs',array ('controller' => 'Matchs','action' => 'index')); ?></li>
+            <li><?php echo $this->Html->link('Users',array ('controller' => 'Users','action' => 'index')); ?></li>
+
+          </ul>
+        </li>
           </ul>
         </div>
       </div>

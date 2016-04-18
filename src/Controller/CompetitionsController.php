@@ -59,7 +59,7 @@ class CompetitionsController extends AppController
                 $this->Flash->error(__('The competition could not be saved. Please, try again.'));
             }
         }
-        $equipes = $this->Competitions->Equipes->find('list', ['limit' => 200]);
+        $equipes = $this->Competitions->Equipes->find('list', ['limit' => 200, 'order' => ['Equipes.id' => 'ASC']]);
         $this->set(compact('competition', 'equipes'));
         $this->set('_serialize', ['competition']);
     }
@@ -85,7 +85,7 @@ class CompetitionsController extends AppController
                 $this->Flash->error(__('The competition could not be saved. Please, try again.'));
             }
         }
-        $equipes = $this->Competitions->Equipes->find('list', ['limit' => 200]);
+        $equipes = $this->Competitions->Equipes->find('list', ['limit' => 200, 'order' => ['Equipes.id' => 'ASC']]);
         $this->set(compact('competition', 'equipes'));
         $this->set('_serialize', ['competition']);
     }

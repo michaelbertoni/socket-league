@@ -63,7 +63,8 @@ class JourneesController extends AppController
                 $this->Flash->error(__('The journee could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('journee'));
+        $competitions = $this->Journees->Competitions->find('list', ['limit' => 200]);
+        $this->set(compact('journee', 'competitions'));
         $this->set('_serialize', ['journee']);
     }
 
@@ -88,7 +89,8 @@ class JourneesController extends AppController
                 $this->Flash->error(__('The journee could not be saved. Please, try again.'));
             }
         }
-        $this->set(compact('journee'));
+        $competitions = $this->Journees->Competitions->find('list', ['limit' => 200]);
+        $this->set(compact('journee', 'competitions'));
         $this->set('_serialize', ['journee']);
     }
 
