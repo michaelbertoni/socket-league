@@ -43,7 +43,6 @@
                 <?= $this->Paginator->numbers() ?>
                 <?= $this->Paginator->next(__('next') . ' >') ?>
             </ul>
-            <p><?= $this->Paginator->counter() ?></p>
         </div>
     </div>
 </div>
