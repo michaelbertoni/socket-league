@@ -7,7 +7,7 @@
     </div>
     <div class="col-sm-10 main">
         <h3><?= __('Matchs') ?></h3>
-        <table class="table" cellpadding="0" cellspacing="0">
+        <table class="table"cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
@@ -39,13 +39,12 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <div class="paginator">
+        <div class="pagination pagination-large">
             <ul class="pagination">
-                <?= $this->Paginator->prev('< ' . __('previous')) ?>
-                <?= $this->Paginator->numbers() ?>
-                <?= $this->Paginator->next(__('next') . ' >') ?>
+                    <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                    <?= $this->Paginator->numbers() ?>
+                    <?= $this->Paginator->next(__('next') . ' >') ?>
             </ul>
-            <p><?= $this->Paginator->counter() ?></p>
         </div>
     </div>
 </div>

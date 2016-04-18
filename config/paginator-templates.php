@@ -1,4 +1,4 @@
 <?php
 return [
-    'number' => '<a href="{{url}}">{{text}}</a>',
+    'number' => '<li><a href="{{url}}">{{text}}</a></li>',
 ];
