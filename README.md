@@ -7,9 +7,9 @@
 Ajouter l'alias Apache :
 
 ```
-Alias /socketleague "c:/REPERTOIRE_GIT_CLONE/"
+Alias /socketleague "c:/REPERTOIRE_GIT_CLONE/webroot/"
 
-    <Directory "c:/REPERTOIRE_GIT_CLONE/">
+    <Directory "c:/REPERTOIRE_GIT_CLONE/webroot/">
          Options FollowSymLinks
          AllowOverride All
          Require all granted
