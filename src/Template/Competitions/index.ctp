@@ -1,12 +1,4 @@
 <div class="row">
-    <div class="col-sm-2 sidebar">
-        <ul class="nav nav-sidebar">
-            <li class="heading"><?= __('Actions') ?></li>
-            <li><?= $this->Html->link(__('New Competition'), ['action' => 'add']) ?></li>
-            <li><?= $this->Html->link(__('List Equipes'), ['controller' => 'Equipes', 'action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('New Equipe'), ['controller' => 'Equipes', 'action' => 'add']) ?></li>
-        </ul>
-    </div>
     <div class="col-sm-10 main">
         <h2><?= __('Competitions') ?></h2>
         <div class="row">
@@ -24,7 +16,7 @@
                         echo $this->Html->link(
                                             $this->Html->image('competitions/'.$competition->nomImgLogo.'', array('alt' => 'logo competition', 'style' => 'padding-right: 10px')).
                                             __(h($competition->nomCompetition)),
-                                            array ('controller' => 'Competitions','action' => 'View', $competition->id),
+                                            array ('controller' => 'Competitions','action' => 'LastJournee', $competition->id),
                                             array ('escape' => false,'style' => 'text-decoration: none; color: black'));
                  $cpt ++;
                  ?>
