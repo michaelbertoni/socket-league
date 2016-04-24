@@ -1,6 +1,7 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<div class="row">
+    <div class="col-sm-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $user->id],
@@ -9,10 +10,9 @@
         ?></li>
         <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
     </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
+</div>
+<div class="col-sm-6 main">
     <?= $this->Form->create($user) ?>
-    <div class="col-md-4">
         <fieldset>
             <legend><?= __('Edit User') ?></legend>
             <?php
@@ -21,7 +21,7 @@
             ?>
         </fieldset>
         <div style="padding-top:10px;">
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Submit'), array('class' => 'btn btn-success')) ?>
         </div>
     </div>
     <?= $this->Form->end() ?>

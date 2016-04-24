@@ -1,13 +1,14 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<div class="row">
+    <div class="col-sm-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('Edit Match'), ['action' => 'edit', $match->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Match'), ['action' => 'delete', $match->id], ['confirm' => __('Are you sure you want to delete # {0}?', $match->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Matchs'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Match'), ['action' => 'add']) ?> </li>
     </ul>
-</nav>
-<div class="matchs view large-9 medium-8 columns content">
+</div>
+<div class="col-sm-10 main">
     <h3>DETAILS</h3>
 
          <div class="row">

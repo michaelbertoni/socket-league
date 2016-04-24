@@ -7,7 +7,7 @@
             <li><?= $this->Html->link(__('New Competition'), ['controller' => 'Competitions', 'action' => 'add']) ?></li>
         </ul>
     </div>
-    <div class="col-sm-6 main">
+    <div class="col-sm-10 main">
         <?= $this->Form->create($equipe) ?>
         <fieldset>
             <legend><?= __('Add Equipe') ?></legend>
@@ -18,7 +18,10 @@
                 echo $this->Form->input('dateFondationEquipe', array('class' => 'form-control'));
                 echo $this->Form->input('entraineurEquipe', array('class' => 'form-control'));
                 echo $this->Form->label('competitions._ids');
-                echo $this->Form->select('competitions._ids', $competitions, array('class' => 'form-control', 'multiple' => 'true', 'style' => 'width: 8%'));
+                foreach ($competitions as $compet):
+                $competList[$compet->id] = $compet->nomCompetition;
+                endforeach;
+                echo $this->Form->select('competitions._ids', $competList, array('class' => 'form-control', 'multiple' => 'true'));
             ?>
         </fieldset>
         <?= $this->Form->button(__('Submit'), array('class' => 'btn btn-default', 'style' => "margin-top: 30px")) ?>
