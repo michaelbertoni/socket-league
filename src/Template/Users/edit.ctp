@@ -12,13 +12,17 @@
 </nav>
 <div class="users form large-9 medium-8 columns content">
     <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Edit User') ?></legend>
-        <?php
-            echo $this->Form->input('loginUser');
-            echo $this->Form->input('passwordUser');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <div class="col-md-4">
+        <fieldset>
+            <legend><?= __('Edit User') ?></legend>
+            <?php
+                echo $this->Form->input('loginUser', array('class' => 'form-control'));
+                echo $this->Form->input('passwordUser', array('class' => 'form-control'));
+            ?>
+        </fieldset>
+        <div style="padding-top:10px;">
+            <?= $this->Form->button(__('Submit')) ?>
+        </div>
+    </div>
     <?= $this->Form->end() ?>
 </div>
