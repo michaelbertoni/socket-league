@@ -61,7 +61,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
               <?php
                   if(session_id() == "") {
                   session_start();}
-                  $tmp = $_SESSION['connected'];
+                  if(isset($_SESSION['connected']))
+                  {
+                    $tmp = $_SESSION['connected'];
+                  } else {
+                    $tmp = 0;
+                  }
                   if($tmp == 0) { ?>
                   <div class="pull-right" style="padding:15px 10px">
                       <a class="btn btn-sm" href="/socketleague/viewlogin" />
