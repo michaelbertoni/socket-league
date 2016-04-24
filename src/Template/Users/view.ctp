@@ -8,19 +8,30 @@
     </ul>
 </nav>
 <div class="users view large-9 medium-8 columns content">
-    <h3><?= h($user->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?= __('LoginUser') ?></th>
-            <td><?= h($user->loginUser) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('PasswordUser') ?></th>
-            <td><?= h($user->passwordUser) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($user->id) ?></td>
-        </tr>
-    </table>
+    <h3>DETAILS</h3>
+
+     <div class="row">
+            <div class="col-md-3">
+              <label> <?= __('LoginUser') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= h($user->loginUser) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <label><?= __('PasswordUser') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= h($user->passwordUser) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <label><?= __('Id') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= $this->Number->format($user->id) ?>
+            </div>
+        </div>
 </div>

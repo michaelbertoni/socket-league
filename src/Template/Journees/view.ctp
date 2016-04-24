@@ -12,31 +12,34 @@
 <div class="journees view large-9 medium-8 columns content">
     <h3><?= h($journee->id) ?></h3>
     <table class="vertical-table">
-        <tr>
-            <th><?= __('NomJournée') ?></th>
-            <td><?= h($journee->nomJournée) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($journee->id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Competition IdCompetition') ?></th>
-            <td><?= $this->Number->format($journee->Competition_idCompetition) ?></td>
-        </tr>
+        <div class="row">
+            <div class="col-md-3">
+              <label> <?= __('NomJournée') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= h($journee->nomJournée) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <label> <?= __('Id') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= $this->Number->format($journee->id) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <label> <?= __('Competition IdCompetition') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= $this->Number->format($journee->Competition_idCompetition) ?>
+            </div>
+        </div>
+
     </table>
     <div class="related">
-    <h4><?= __('Related Matchs') ?></h4>
-            <?php if (!empty($journee->matchs)): ?>
-                <?php foreach ($journee->matchs as $matchs): ?>
-                    <div class="col-md-4">
-                        <span><?= h($matchs->dateMatch) ?></span>
-                        <span><?= h($matchs->EquipeDomicile_idEquipe) ?></span>
-                        <span><?= h($matchs->scoreEquipeDomicile) ?></span>
-                        <span><?= h($matchs->EquipeVisiteur_idEquipe) ?></span>
-                        <span><?= h($matchs->scoreEquipeVisiteur) ?></span>
-                    </div>
-                <?php endforeach; ?>
+
 
 
             <table class="table table-hover" cellpadding="0" cellspacing="0">
@@ -67,6 +70,5 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        <?php endif; ?>
     </div>
 </div>

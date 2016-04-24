@@ -8,31 +8,53 @@
     </ul>
 </nav>
 <div class="stades view large-9 medium-8 columns content">
-    <h3><?= h($stade->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?= __('NomStade') ?></th>
-            <td><?= h($stade->nomStade) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('AdresseStade') ?></th>
-            <td><?= h($stade->adresseStade) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('TelephoneStade') ?></th>
-            <td><?= h($stade->telephoneStade) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($stade->id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('CapaciteStade') ?></th>
-            <td><?= $this->Number->format($stade->capaciteStade) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Equipe IdEquipe') ?></th>
-            <td><?= $this->Number->format($stade->Equipe_idEquipe) ?></td>
-        </tr>
-    </table>
+    <h3>DETAILS</h3>
+    <div class="row">
+        <div class="col-md-3">
+          <label> <?= __('NoStade') ?></label>
+        </div>
+        <div class="col-md-3">
+            <?= h($stade->nomStade) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+          <label><?= __('AdresseStade') ?></label>
+        </div>
+        <div class="col-md-3">
+            <?= h($stade->adresseStade) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+          <label><?= __('TelephoneStade') ?></label>
+        </div>
+        <div class="col-md-3">
+            <?= h($stade->telephoneStade) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+          <label><?= __('Id') ?></label>
+        </div>
+        <div class="col-md-3">
+            <?= $this->Number->format($stade->id) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+          <label><?= __('CapaciteStade') ?></label>
+        </div>
+        <div class="col-md-3">
+            <?= $this->Number->format($stade->capaciteStade) ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+          <label><?= __('Equipe IdEquipe') ?></label>
+        </div>
+        <div class="col-md-3">
+            <?= $this->Number->format($stade->Equipe_idEquipe) ?>
+        </div>
+    </div>
 </div>

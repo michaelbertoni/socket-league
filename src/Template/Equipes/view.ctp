@@ -10,29 +10,57 @@
     </ul>
 </nav>
 <div class="equipes view large-9 medium-8 columns content">
-    <h3><?= h($equipe->id) ?></h3>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                 <th><?= __('NomEquipe') ?></th>
-                 <th><?= __('NomCourt') ?></th>
-                 <th><?= __('PresidentEquipe') ?></th>
-                 <th><?= __('EntraineurEquipe') ?></th>
-                 <th><?= __('Id') ?></th>
-                 <th><?= __('DateFondationEquipe') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-             <tr>
-                  <td><?= h($equipe->nomEquipe) ?></td>
-                  <td><?= h($equipe->nomCourt) ?></td>
-                  <td><?= h($equipe->presidentEquipe) ?></td>
-                  <td><?= h($equipe->entraineurEquipe) ?></td>
-                  <td><?= $this->Number->format($equipe->id) ?></td>
-                  <td><?= $this->Number->format($equipe->dateFondationEquipe) ?></td>
-             </tr>
-        </tbody>
-    </table>
+    <h3>DETAILS</h3>
+
+        <div class="row">
+            <div class="col-md-3">
+              <label> <?= __('NomEquipe') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= h($equipe->nomEquipe) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <label><?= __('NomCourt') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= h($equipe->nomCourt) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <label><?= __('PresidentEquipe') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= h($equipe->presidentEquipe) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <label><?= __('EntraineurEquipe') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= h($equipe->entraineurEquipe) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <label><?= __('Id') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= $this->Number->format($equipe->id) ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+              <label><?= __('DateFondationEquipe') ?></label>
+            </div>
+            <div class="col-md-3">
+                <?= $this->Number->format($equipe->dateFondationEquipe) ?>
+            </div>
+        </div>
+
     <div class="related">
         <h4><?= __('Related Competitions') ?></h4>
         <?php if (!empty($equipe->competitions)): ?>
