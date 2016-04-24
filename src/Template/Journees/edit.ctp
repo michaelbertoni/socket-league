@@ -12,13 +12,17 @@
 </nav>
 <div class="journees form large-9 medium-8 columns content">
     <?= $this->Form->create($journee) ?>
-    <fieldset>
-        <legend><?= __('Edit Journee') ?></legend>
-        <?php
-            echo $this->Form->input('nomJournée');
-            echo $this->Form->input('Competition_idCompetition');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <div class="col-md-4">
+        <fieldset>
+            <legend><?= __('Edit Journee') ?></legend>
+            <?php
+                echo $this->Form->input('nomJournée', array('class' => 'form-control'));
+                echo $this->Form->input('Competition_idCompetition', array('class' => 'form-control'));
+            ?>
+        </fieldset>
+        <div style="padding-top:10px;">
+            <?= $this->Form->button(__('Valider'), array('class' => 'btn btn-success')) ?>
+        </div>
+    </div>
     <?= $this->Form->end() ?>
 </div>

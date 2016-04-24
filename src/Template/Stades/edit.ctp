@@ -12,16 +12,20 @@
 </nav>
 <div class="stades form large-9 medium-8 columns content">
     <?= $this->Form->create($stade) ?>
+    <div class="col-md-4">
     <fieldset>
         <legend><?= __('Edit Stade') ?></legend>
         <?php
-            echo $this->Form->input('nomStade');
-            echo $this->Form->input('capaciteStade');
-            echo $this->Form->input('adresseStade');
-            echo $this->Form->input('telephoneStade');
-            echo $this->Form->input('Equipe_idEquipe');
+            echo $this->Form->input('nomStade', array('class' => 'form-control'));
+            echo $this->Form->input('capaciteStade', array('class' => 'form-control'));
+            echo $this->Form->input('adresseStade', array('class' => 'form-control'));
+            echo $this->Form->input('telephoneStade', array('class' => 'form-control'));
+            echo $this->Form->input('Equipe_idEquipe', array('class' => 'form-control'));
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+        <div style="padding-top:10px;">
+            <?= $this->Form->button(__('Valider'), array('class' => 'btn btn-success')) ?>
+        </div>
+    </div>
     <?= $this->Form->end() ?>
 </div>

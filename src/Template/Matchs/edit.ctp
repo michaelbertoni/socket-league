@@ -12,17 +12,21 @@
 </nav>
 <div class="matchs form large-9 medium-8 columns content">
     <?= $this->Form->create($match) ?>
-    <fieldset>
-        <legend><?= __('Edit Match') ?></legend>
-        <?php
-            echo $this->Form->input('scoreEquipeDomicile');
-            echo $this->Form->input('scoreEquipeVisiteur');
-            echo $this->Form->input('EquipeDomicile_idEquipe');
-            echo $this->Form->input('EquipeVisiteur_idEquipe');
-            echo $this->Form->input('Journée_idJournée');
-            echo $this->Form->input('dateMatch');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <div class="col-md-4">
+        <fieldset>
+            <legend><?= __('Edit Match') ?></legend>
+            <?php
+                echo $this->Form->input('scoreEquipeDomicile', array('class' => 'form-control'));
+                echo $this->Form->input('scoreEquipeVisiteur', array('class' => 'form-control'));
+                echo $this->Form->input('EquipeDomicile_idEquipe', array('class' => 'form-control'));
+                echo $this->Form->input('EquipeVisiteur_idEquipe', array('class' => 'form-control'));
+                echo $this->Form->input('Journée_idJournée', array('class' => 'form-control'));
+                echo '<div style="padding-top:10px;">'.$this->Form->input('dateMatch').'</div>';
+            ?>
+        </fieldset>
+        <div style="padding-top:10px;">
+            <?= $this->Form->button(__('Submit'), array('class' => 'btn btn-success')) ?>
+        </div>
+    </div>
     <?= $this->Form->end() ?>
 </div>
