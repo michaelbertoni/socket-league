@@ -18,6 +18,9 @@ class MatchsController extends AppController
      */
     public function index()
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $matchs = $this->paginate($this->Matchs);
 
         $this->set(compact('matchs'));
@@ -33,6 +36,9 @@ class MatchsController extends AppController
      */
     public function view($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $match = $this->Matchs->get($id, [
             'contain' => []
         ]);
@@ -48,6 +54,9 @@ class MatchsController extends AppController
      */
     public function add()
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $match = $this->Matchs->newEntity();
         if ($this->request->is('post')) {
             $match = $this->Matchs->patchEntity($match, $this->request->data);
@@ -71,6 +80,9 @@ class MatchsController extends AppController
      */
     public function edit($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $match = $this->Matchs->get($id, [
             'contain' => []
         ]);
@@ -96,6 +108,9 @@ class MatchsController extends AppController
      */
     public function delete($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $this->request->allowMethod(['post', 'delete']);
         $match = $this->Matchs->get($id);
         if ($this->Matchs->delete($match)) {

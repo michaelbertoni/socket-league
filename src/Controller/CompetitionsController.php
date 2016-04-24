@@ -19,6 +19,9 @@ class CompetitionsController extends AppController
      */
     public function index()
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $competitions = $this->paginate($this->Competitions);
 
         $this->set(compact('competitions'));
@@ -34,6 +37,9 @@ class CompetitionsController extends AppController
      */
     public function view($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $competition = $this->Competitions->get($id, [
             'contain' => ['Equipes','Journees']
         ]);
@@ -49,6 +55,9 @@ class CompetitionsController extends AppController
      */
     public function add()
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $competition = $this->Competitions->newEntity();
         if ($this->request->is('post')) {
             $competition = $this->Competitions->patchEntity($competition, $this->request->data);
@@ -73,6 +82,9 @@ class CompetitionsController extends AppController
      */
     public function edit($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $competition = $this->Competitions->get($id, [
             'contain' => ['Equipes']
         ]);
@@ -99,6 +111,9 @@ class CompetitionsController extends AppController
      */
     public function delete($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $this->request->allowMethod(['post', 'delete']);
         $competition = $this->Competitions->get($id);
         if ($this->Competitions->delete($competition)) {

@@ -18,6 +18,9 @@ class StadesController extends AppController
      */
     public function index()
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $stades = $this->paginate($this->Stades);
 
         $this->set(compact('stades'));
@@ -33,6 +36,9 @@ class StadesController extends AppController
      */
     public function view($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $stade = $this->Stades->get($id, [
             'contain' => []
         ]);
@@ -48,6 +54,9 @@ class StadesController extends AppController
      */
     public function add()
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $stade = $this->Stades->newEntity();
         if ($this->request->is('post')) {
             $stade = $this->Stades->patchEntity($stade, $this->request->data);
@@ -71,6 +80,9 @@ class StadesController extends AppController
      */
     public function edit($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $stade = $this->Stades->get($id, [
             'contain' => []
         ]);
@@ -96,6 +108,9 @@ class StadesController extends AppController
      */
     public function delete($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $this->request->allowMethod(['post', 'delete']);
         $stade = $this->Stades->get($id);
         if ($this->Stades->delete($stade)) {
