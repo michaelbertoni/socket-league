@@ -1,4 +1,3 @@
-<div class="container">
     <div class="row">
         <div class="col-xs-4">
             <h1><?= $competition->nomCompetition ?></h1>
@@ -59,4 +58,3 @@
         if ($i%3 == 0) echo '</div><div class="row">';
         endforeach; ?>
     </div>
-</div>

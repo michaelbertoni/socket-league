@@ -28,11 +28,4 @@ class User extends Entity
         'id' => false,
     ];
 
-    // Code from bake.
-
-    protected function _setPasswordUser($value)
-    {
-        $hasher = new DefaultPasswordHasher();
-        return $hasher->hash($value);
-    }
 }
