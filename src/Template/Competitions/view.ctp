@@ -11,91 +11,46 @@
         <li><?= $this->Html->link(__('New Journee'), ['controller' => 'Journees', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
-<div class="competitions view large-9 medium-8 columns content">
-    <h3><?= h($competition->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?= __('NomCompetition') ?></th>
-            <td><?= h($competition->nomCompetition) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('ZoneCompetition') ?></th>
-            <td><?= h($competition->zoneCompetition) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('NbEquipeCompetition') ?></th>
-            <td><?= h($competition->nbEquipeCompetition) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('TypeClsmtExAequoCompetition') ?></th>
-            <td><?= h($competition->typeClsmtExAequoCompetition) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('Id') ?></th>
-            <td><?= $this->Number->format($competition->id) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('PtsGagneCompetition') ?></th>
-            <td><?= $this->Number->format($competition->ptsGagneCompetition) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('PtsPerduCompetition') ?></th>
-            <td><?= $this->Number->format($competition->ptsPerduCompetition) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('PtsNulCompetition') ?></th>
-            <td><?= $this->Number->format($competition->ptsNulCompetition) ?></td>
-        </tr>
-    </table>
+            <h2><?= __('Competition :') ?> <?= h($competition->nomCompetition) ?></h2>
+
+
+    <h4><?= __('Journées de la compétitions :') ?></h4>
+                        <?php if (!empty($competition->journees)): ?>
+                        <table class="table table-hover" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <?php foreach ($competition->journees as $journees): ?>
+                                        <th><?= $this->Html->link(__(h($journees->nomJournée)), ['controller' => 'Journees', 'action' => 'view', $journees->id]) ?></td>
+                                    <?php endforeach; ?>
+                                </tr>
+                            </thead>
+                        </table>
+                        <?php endif; ?>
+
     <div class="related">
-        <h4><?= __('Related Equipes') ?></h4>
+        <h4><?= __('Equipes participantes') ?></h4>
         <?php if (!empty($competition->equipes)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('NomEquipe') ?></th>
-                <th><?= __('NomCourt') ?></th>
-                <th><?= __('PresidentEquipe') ?></th>
-                <th><?= __('DateFondationEquipe') ?></th>
-                <th><?= __('EntraineurEquipe') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($competition->equipes as $equipes): ?>
-            <tr>
-                <td><?= h($equipes->id) ?></td>
-                <td><?= h($equipes->nomEquipe) ?></td>
-                <td><?= h($equipes->nomCourt) ?></td>
-                <td><?= h($equipes->presidentEquipe) ?></td>
-                <td><?= h($equipes->dateFondationEquipe) ?></td>
-                <td><?= h($equipes->entraineurEquipe) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Equipes', 'action' => 'view', $equipes->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Equipes', 'action' => 'edit', $equipes->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Equipes', 'action' => 'delete', $equipes->id], ['confirm' => __('Are you sure you want to delete # {0}?', $equipes->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        <?php endif; ?>
-        <h4><?= __('Related Journées') ?></h4>
-        <?php if (!empty($competition->journees)): ?>
-        <table cellpadding="0" cellspacing="0">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('nomJournée') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php foreach ($competition->journees as $journees): ?>
-            <tr>
-                <td><?= h($journees->id) ?></td>
-                <td><?= h($journees->nomJournée) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Journees', 'action' => 'view', $journees->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Journees', 'action' => 'edit', $journees->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Journees', 'action' => 'delete', $journees->id], ['confirm' => __('Are you sure you want to delete # {0}?', $journees->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
+        <table class="table table-hover" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th><?= __('Id') ?></th>
+                    <th><?= __('Equipe') ?></th>
+                    <th><?= __('PresidentEquipe') ?></th>
+                    <th><?= __('DateFondationEquipe') ?></th>
+                    <th><?= __('EntraineurEquipe') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($competition->equipes as $equipes): ?>
+                <tr>
+                    <td><?= h($equipes->id) ?></td>
+                    <td><?= $this->Html->link(__(h($equipes->nomCourt)), ['controller' => 'Equipes', 'action' => 'view', $equipes->id]) ?></td>
+                    <td><?= h($equipes->presidentEquipe) ?></td>
+                    <td><?= h($equipes->dateFondationEquipe) ?></td>
+                    <td><?= h($equipes->entraineurEquipe) ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
         <?php endif; ?>
     </div>

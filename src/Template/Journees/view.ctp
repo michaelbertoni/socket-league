@@ -28,31 +28,44 @@
     <div class="related">
     <h4><?= __('Related Matchs') ?></h4>
             <?php if (!empty($journee->matchs)): ?>
-            <table cellpadding="0" cellspacing="0">
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <th><?= __('Equipe domicile') ?></th>
-                    <th><?= __('Score domicile') ?></th>
-                    <th><?= __('Equipe Visiteur') ?></th>
-                    <th><?= __('Score visiteur') ?></th>
-                    <th><?= __('Date match') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
                 <?php foreach ($journee->matchs as $matchs): ?>
-                <tr>
-                    <td><?= h($matchs->id) ?></td>
-                    <td><?= h($matchs->EquipeDomicile_idEquipe) ?></td>
-                    <td><?= h($matchs->scoreEquipeDomicile) ?></td>
-                    <td><?= h($matchs->EquipeVisiteur_idEquipe) ?></td>
-                    <td><?= h($matchs->scoreEquipeVisiteur) ?></td>
-                    <td><?= h($matchs->dateMatch) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['controller' => 'Matchs', 'action' => 'view', $matchs->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['controller' => 'Matchs', 'action' => 'edit', $matchs->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['controller' => 'Matchs', 'action' => 'delete', $matchs->id], ['confirm' => __('Are you sure you want to delete # {0}?', $matchs->id)]) ?>
-                    </td>
-                </tr>
+                    <div class="col-md-4">
+                        <span><?= h($matchs->dateMatch) ?></span>
+                        <span><?= h($matchs->EquipeDomicile_idEquipe) ?></span>
+                        <span><?= h($matchs->scoreEquipeDomicile) ?></span>
+                        <span><?= h($matchs->EquipeVisiteur_idEquipe) ?></span>
+                        <span><?= h($matchs->scoreEquipeVisiteur) ?></span>
+                    </div>
                 <?php endforeach; ?>
+
+
+            <table class="table table-hover" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th><?= __('Equipe domicile') ?></th>
+                        <th><?= __('Score domicile') ?></th>
+                        <th><?= __('Equipe Visiteur') ?></th>
+                        <th><?= __('Score visiteur') ?></th>
+                        <th><?= __('Date match') ?></th>
+                        <th class="actions"><?= __('Actions') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($journee->matchs as $matchs): ?>
+                    <tr>
+                        <td><?= h($matchs->EquipeDomicile_idEquipe) ?></td>
+                        <td><?= h($matchs->scoreEquipeDomicile) ?></td>
+                        <td><?= h($matchs->EquipeVisiteur_idEquipe) ?></td>
+                        <td><?= h($matchs->scoreEquipeVisiteur) ?></td>
+                        <td><?= h($matchs->dateMatch) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['controller' => 'Matchs', 'action' => 'view', $matchs->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['controller' => 'Matchs', 'action' => 'edit', $matchs->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'Matchs', 'action' => 'delete', $matchs->id], ['confirm' => __('Are you sure you want to delete # {0}?', $matchs->id)]) ?>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
             </table>
         <?php endif; ?>
     </div>

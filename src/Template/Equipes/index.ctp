@@ -9,7 +9,7 @@
     </div>
     <div class="col-sm-10 main">
         <h3><?= __('Equipes') ?></h3>
-        <table class="table" cellpadding="0" cellspacing="0">
+        <table class="table table-hover" cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>

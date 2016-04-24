@@ -42,7 +42,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
+      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -72,7 +72,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </nav>
     
     <?= $this->Flash->render() ?>
-    <div class="container-fluid" style="padding-top: 100px;">
+    <div class="container" style="padding-top: 100px;">
         <?= $this->fetch('content') ?>
     </div>
     <footer>

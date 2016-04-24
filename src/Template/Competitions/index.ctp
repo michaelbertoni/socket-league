@@ -9,17 +9,17 @@
     </div>
     <div class="col-sm-10 main">
         <h3><?= __('Competitions') ?></h3>
-        <table class="table" cellpadding="0" cellspacing="0">
+        <table class="table table-hover" cellpadding="0" cellspacing="0">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('nomCompetition') ?></th>
-                    <th><?= $this->Paginator->sort('zoneCompetition') ?></th>
-                    <th><?= $this->Paginator->sort('nbEquipeCompetition') ?></th>
-                    <th><?= $this->Paginator->sort('ptsGagneCompetition') ?></th>
-                    <th><?= $this->Paginator->sort('ptsPerduCompetition') ?></th>
-                    <th><?= $this->Paginator->sort('ptsNulCompetition') ?></th>
-                    <th><?= $this->Paginator->sort('typeClsmtExAequoCompetition') ?></th>
+                    <th><?= $this->Paginator->sort('nom') ?></th>
+                    <th><?= $this->Paginator->sort('zone') ?></th>
+                    <th><?= $this->Paginator->sort('nbEquipe') ?></th>
+                    <th><?= $this->Paginator->sort('ptsGagne') ?></th>
+                    <th><?= $this->Paginator->sort('ptsPerdu') ?></th>
+                    <th><?= $this->Paginator->sort('ptsNul') ?></th>
+                    <th><?= $this->Paginator->sort('typeClsmtExAequo') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -27,7 +27,7 @@
                 <?php foreach ($competitions as $competition): ?>
                 <tr>
                     <td><?= $this->Number->format($competition->id) ?></td>
-                    <td><?= h($competition->nomCompetition) ?></td>
+                    <td><?= $this->Html->link(__(h($competition->nomCompetition)), ['action' => 'view', $competition->id]) ?></td>
                     <td><?= h($competition->zoneCompetition) ?></td>
                     <td><?= h($competition->nbEquipeCompetition) ?></td>
                     <td><?= $this->Number->format($competition->ptsGagneCompetition) ?></td>
@@ -35,7 +35,6 @@
                     <td><?= $this->Number->format($competition->ptsNulCompetition) ?></td>
                     <td><?= h($competition->typeClsmtExAequoCompetition) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $competition->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $competition->id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $competition->id], ['confirm' => __('Are you sure you want to delete # {0}?', $competition->id)]) ?>
                     </td>
