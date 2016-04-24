@@ -34,9 +34,9 @@
                         <td class="h3 text-center">'.$rang.'</td>
                         <td>';
                         echo $this->Html->link(
-                            $this->Html->image('equipes/'.$equipe->nomImgLogo.'', array('alt' => 'logo equipe', 'style' => 'padding-right: 10px')).
+                            $this->Html->image('equipes/'.$equipe->nomImgLogo.'', array('alt' => 'logo equipe', 'style' => 'padding-right: 10px; max-width: 40px; max-height:40px;')).
                             __($equipe->nomEquipe),
-                            array ('controller' => 'Equipes','action' => '', $equipe->id),
+                            array ('controller' => 'Equipes','action' => 'detailequipe', $equipe->id),
                             array ('escape' => false,'style' => 'text-decoration: none; color: black'));
                         echo '</td>
                         <td>'.$equipe->pointsCompetition.'</td>

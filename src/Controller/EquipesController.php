@@ -7,6 +7,7 @@ use App\Controller\AppController;
  * Equipes Controller
  *
  * @property \App\Model\Table\EquipesTable $Equipes
+ * @property \App\Model\Table\StadesTable $Stades
  */
 class EquipesController extends AppController
 {
@@ -106,5 +107,16 @@ class EquipesController extends AppController
             $this->Flash->error(__('The equipe could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function detailequipe($id)
+    {
+        $equipe = $this->Equipes->get($id, [
+            'contain' => ['Stades']
+        ]);
+
+        $this->set('equipefront', $equipe);
+        $this->set('_serialize', ['equipefront']);
+
     }
 }
