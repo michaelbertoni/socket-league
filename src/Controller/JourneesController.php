@@ -23,6 +23,9 @@ class JourneesController extends AppController
      */
     public function index()
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $journees = $this->paginate($this->Journees);
 
         $this->set(compact('journees'));
@@ -38,6 +41,9 @@ class JourneesController extends AppController
      */
     public function view($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $journee = $this->Journees->get($id, [
             'contain' => ['Matchs']
         ]);
@@ -53,6 +59,9 @@ class JourneesController extends AppController
      */
     public function add()
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $journee = $this->Journees->newEntity();
         if ($this->request->is('post')) {
             $journee = $this->Journees->patchEntity($journee, $this->request->data);
@@ -77,6 +86,9 @@ class JourneesController extends AppController
      */
     public function edit($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $journee = $this->Journees->get($id, [
             'contain' => []
         ]);
@@ -103,6 +115,9 @@ class JourneesController extends AppController
      */
     public function delete($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $this->request->allowMethod(['post', 'delete']);
         $journee = $this->Journees->get($id);
         if ($this->Journees->delete($journee)) {

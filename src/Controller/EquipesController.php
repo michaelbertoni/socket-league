@@ -19,6 +19,9 @@ class EquipesController extends AppController
      */
     public function index()
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $equipes = $this->paginate($this->Equipes);
 
         $this->set(compact('equipes'));
@@ -34,6 +37,9 @@ class EquipesController extends AppController
      */
     public function view($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $equipe = $this->Equipes->get($id, [
             'contain' => ['Competitions', 'Stades']
         ]);
@@ -49,6 +55,9 @@ class EquipesController extends AppController
      */
     public function add()
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $equipe = $this->Equipes->newEntity();
         if ($this->request->is('post')) {
             $equipe = $this->Equipes->patchEntity($equipe, $this->request->data);
@@ -73,6 +82,9 @@ class EquipesController extends AppController
      */
     public function edit($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $equipe = $this->Equipes->get($id, [
             'contain' => ['Competitions']
         ]);
@@ -99,6 +111,9 @@ class EquipesController extends AppController
      */
     public function delete($id = null)
     {
+        if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
+            return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
+        }
         $this->request->allowMethod(['post', 'delete']);
         $equipe = $this->Equipes->get($id);
         if ($this->Equipes->delete($equipe)) {
