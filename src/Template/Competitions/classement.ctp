@@ -1,7 +1,19 @@
+<?php // debug($competition); ?>
+
 <div class="row">
     <div class="col-xs-4">
         <h1><?= $competition->nomCompetition ?></h1>
         <h2>Classement<h2>
+        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Journées de la compétition <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                                <?php foreach ($competition->journees as $journ): ?>
+                                                       <li><a href="/socketleague/journee/<?= $journ->id ?>"><?= $journ->nomJournée ?></a></li>
+                                                <?php endforeach; ?>
+                            </ul>
+        </div>
     </div>
     <div class="col-xs-offset-4 col-xs-4" style="padding-bottom: 50px">
         <?= $this->Html->image('competitions/'.$competition->nomImgLogo.'', array('alt' => 'logo compétition', 'class' => 'img-responsive pull-right', 'style' => "max-width: 150px")); ?>

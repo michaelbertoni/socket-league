@@ -144,7 +144,7 @@ class CompetitionsController extends AppController
     public function classement($id = null)
     {
         $competition = $this->Competitions->get($id, [
-            'contain' => ['Equipes.Matchs']
+            'contain' => ['Equipes.Matchs', 'Journees']
         ]);
 
         foreach ($competition->equipes as $equipe) {
