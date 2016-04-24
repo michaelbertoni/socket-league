@@ -41,40 +41,66 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
+    <nav class="navbar navbar-fixed-top navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/socketleague">Accueil</a>
+          <a class="navbar-brand" href="/socketleague/">Accueil</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-              <div class="col-md-9 ul-header">
-                    <ul class="ul-header">
-                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Equipes',array ('controller' => 'Equipes','action' => 'index')); ?></li>
-                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Stades',array ('controller' => 'Stades','action' => 'index')); ?></li>
-                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Competitions',array ('controller' => 'Competitions','action' => 'index')); ?></li>
-                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Journees',array ('controller' => 'Journees','action' => 'index')); ?></li>
-                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Matchs',array ('controller' => 'Matchs','action' => 'index')); ?></li>
-                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Users',array ('controller' => 'Users','action' => 'index')); ?></li>
-                    </ul>
-                </div>
 
-                      <div class="col-md-offset-1 col-md-1 form-group" style="padding:0">
-                <a href="#" class="navbar-brand" >
-                    <span class="glyphicon glyphicon-user btn-lg a-navbar"></span>
-                </a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="listeCompetition/" />Competitions</a></li>
+          </ul>
+              <?php
+                  if(session_id() == "") {
+                  session_start();}
+                  $tmp = $_SESSION['connected'];
+                  if($tmp == 0) { ?>
+                  <div class="pull-right" style="padding:15px 10px">
+                      <a class="btn btn-sm" href="/socketleague/viewlogin" />
+                        <span class="glyphicon glyphicon-off" style= "padding-right: 5px"></span>Se connecter
+                      </a>
+                  </div>
+                  <?php } else { ?>
+                  <div class="pull-right" style="padding:15px 10px">
+                      <a class="btn btn-sm" href="/socketleague/deconnect">
+                        <span class="glyphicon glyphicon-off" style= "padding-right: 5px"></span>Déconnexion
+                      </a>
+                  </div>
+                  <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                  <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Back-Office<span class="caret" style="margin-left: 5px"></span></a>
+                                <ul class="dropdown-menu">
+                                  <li><?php echo $this->Html->link('Equipes',array ('controller' => 'Equipes','action' => 'index')); ?></li>
+                                  <li><?php echo $this->Html->link('Stades',array ('controller' => 'Stades','action' => 'index')); ?></li>
+                                  <li><?php echo $this->Html->link('Competitions',array ('controller' => 'Competitions','action' => 'index')); ?></li>
+                                  <li><?php echo $this->Html->link('Journees',array ('controller' => 'Journees','action' => 'index')); ?></li>
+                                  <li><?php echo $this->Html->link('Matchs',array ('controller' => 'Matchs','action' => 'index')); ?></li>
+                                  <li><?php echo $this->Html->link('Users',array ('controller' => 'Users','action' => 'index')); ?></li>
+
+                                </ul>
+                              </li>
+                                </ul>
+                              </div>
+                            </div>
+              <?php } ?>
             </div>
         </div>
       </div>
     </nav>
+
+
     
     <?= $this->Flash->render() ?>
-    <div class="container-fluid" style="padding-top: 100px;">
+    <div class="container" style="padding-top: 100px;">
         <?= $this->fetch('content') ?>
     </div>
     <footer>

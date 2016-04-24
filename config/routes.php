@@ -79,6 +79,7 @@ Router::connect('/classement/*', ['controller' => 'Competitions', 'action' => 'c
 Router::connect('/listeCompetition/', ['controller' => 'Competitions', 'action' => 'frontListe']);
 Router::connect('/detailequipe/*',['controller' => 'Equipes', 'action' => 'detailequipe']);
 Router::connect('/viewlogin', ['controller' => 'Users', 'action' => 'viewlogin']);
+Router::connect('/deconnect', ['controller' => 'Users', 'action' => 'deconnect']);
 
 
 /*// Nouvelle route ajoutée pour notre action "tagged".

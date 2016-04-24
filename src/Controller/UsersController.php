@@ -107,7 +107,8 @@ class UsersController extends AppController
     }
 
     public function viewlogin(){
-        session_start();
+        if(session_id() == "") {
+            session_start();}
         $user = $this->Users->newEntity();
 
         $user = $this->Users->patchEntity($user, $this->request->data);
@@ -122,27 +123,19 @@ class UsersController extends AppController
                 $temppass = $userlist->passwordUser;
                 if($templogin == $loginUser && $temppass == $passwordUser) {
                     $_SESSION['connected'] = true;
-                    return $this->redirect(['action' => '/journee']);
+                    $_SESSION['login'] = $loginUser;
+                    return $this->redirect('/');
                 }
             }
 
         }
     }
 
-    public function login() {
-        $user = $this->Users->newEntity();
-        $user = $this->Users->patchEntity($user, $this->request->data);
+    public function deconnect() {
+        session_start();
+        $_SESSION['connected'] = false;
 
-        $loginUser = $user->get('loginUser');
-        $passwordUser = $user->get('passwordUser');
-
-        $users = $this->Users->find('all');
-
-        foreach ($users as $userlist) {
-            if($userlist->loginUser == $loginUser && $userlist->passwordUser == $passwordUser) {
-                $_SESSION['connected'] = true;
-                return $this->redirect(['action' => 'index']);
-            }
-        }
+        return $this->redirect('/');
     }
+
 }
