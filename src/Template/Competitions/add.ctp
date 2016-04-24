@@ -7,7 +7,7 @@
             <li><?= $this->Html->link(__('New Equipe'), ['controller' => 'Equipes', 'action' => 'add']) ?></li>
         </ul>
     </div>
-    <div class="col-sm-6 main">
+    <div class="col-sm-10 main">
         <?= $this->Form->create($competition) ?>
         <fieldset>
             <legend><?= __('Add Competition') ?></legend>
@@ -20,7 +20,10 @@
                 echo $this->Form->input('ptsNulCompetition', array('class' => 'form-control'));
                 echo $this->Form->input('typeClsmtExAequoCompetition', array('class' => 'form-control'));
                 echo $this->Form->label('equipes._ids');
-                echo $this->Form->select('equipes._ids', $equipes, array('class' => 'form-control', 'multiple' => 'true', 'style' => 'width: 8%'));
+                foreach ($equipes as $eq):
+                $equipeListe[$eq->id] = $eq->nomEquipe;
+                endforeach;
+                echo $this->Form->select('equipes._ids', $equipeListe, array('class' => 'form-control', 'multiple' => 'true'));
             ?>
         </fieldset>
         <?= $this->Form->button(__('Submit'), array('class' => 'btn btn-default', 'style' => "margin-top: 30px")) ?>

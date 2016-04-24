@@ -1,6 +1,7 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
+<div class="row">
+    <div class="col-sm-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('Edit Journee'), ['action' => 'edit', $journee->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Journee'), ['action' => 'delete', $journee->id], ['confirm' => __('Are you sure you want to delete # {0}?', $journee->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Journees'), ['action' => 'index']) ?> </li>
@@ -8,8 +9,8 @@
         <li><?= $this->Html->link(__('List Matchs'), ['controller' => 'Matchs', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Match'), ['controller' => 'Match', 'action' => 'add']) ?> </li>
     </ul>
-</nav>
-<div class="journees view large-9 medium-8 columns content">
+</div>
+<div class="col-sm-10 main">
     <h3><?= h($journee->id) ?></h3>
     <table class="vertical-table">
         <div class="row">
@@ -40,7 +41,7 @@
     </table>
     <div class="related">
 
-
+        <h4><?= __('Matchs de la journée') ?></h4>
 
             <table class="table table-hover" cellpadding="0" cellspacing="0">
                 <thead>
