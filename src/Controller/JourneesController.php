@@ -122,8 +122,14 @@ class JourneesController extends AppController
             ->order(['id' => 'DESC'])
             ->first();
 
-        // redirection vers l'action resultats du controller
-        $this->redirect(['action' => 'resultats', $journeeCompetition]);
+        if (!$journeeCompetition == null) {
+            // redirection vers l'action resultats du controller
+            $this->redirect(['action' => 'resultats', $journeeCompetition]);
+        } else {
+            $this->redirect(['action' => 'notFound']);
+        }
+
+        
     }
 
     public function resultats($id = null)
@@ -179,5 +185,10 @@ class JourneesController extends AppController
             'idJourneePrev' => $journeePrev,
             'idJourneeNext' => $journeeNext
         ]);
+    }
+
+    public function notFound()
+    {
+        
     }
 }
