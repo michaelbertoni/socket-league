@@ -199,4 +199,12 @@ class CompetitionsController extends AppController
         }
         return ($a->pointsCompetition < $b->pointsCompetition) ? 1 : -1;
     }
+
+    public function frontListe()
+    {
+        $competitions = $this->paginate($this->Competitions);
+
+        $this->set(compact('competitions'));
+        $this->set('_serialize', ['competitions']);
+    }
 }

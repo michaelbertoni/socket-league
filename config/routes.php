@@ -76,6 +76,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 Router::connect('/competition/*', ['controller' => 'Competitions', 'action' => 'lastJournee']);
 Router::connect('/journee/*', ['controller' => 'Journees', 'action' => 'resultats']);
 Router::connect('/classement/*', ['controller' => 'Competitions', 'action' => 'classement']);
+Router::connect('/listeCompetition/', ['controller' => 'Competitions', 'action' => 'frontListe']);
 
 
 /*// Nouvelle route ajoutée pour notre action "tagged".
