@@ -1,33 +1,34 @@
-<div class="col-sm-2 sidebar">
-    <li class="heading" style="list-style-type: none"><?= __('Derniers matchs') ?></li>
-    <div class="related">
-        <table class="table table-hover" cellpadding="0" cellspacing="0">
-            <thead>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <th><?= __('Score Equipe Domicile') ?></th>
-                    <th><?= __('Score Equipe Visiteur') ?></th>
-                    <th><?= __('Date Match') ?></th>
-                    <th><?= __('Journée') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($matchs as $match): ?>
-                <tr>
-                    <td><?= h($match->id) ?></td>
-                    <td><?= h($match->scoreEquipeDomicile) ?></td>
-                    <td><?= h($match->scoreEquipeVisiteur) ?></td>
-                    <td><?= h($match->dateMatch) ?></td>
-                    <td><?= h($match->Journée_idJournée) ?></td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>    
-    </div>
+<div class="col-sm-4 sidebar">
+<h2>Derniers matchs</h2>
+<?php foreach ($matchs as $match): ?>
+    <?php //debug($match);?>
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <?= $match->dateMatch->nice('Europe/Paris', 'fr-FR'); ?> - <?= $match->journee->competition->nomCompetition ?>
+                    </div>
+                    <?php echo $this->Html->link(
+                        '<div class="panel-body h4" style="padding-left: 20px; padding-right: 40px; color: black">
+                            <p>'.
+                                $this->Html->image('equipes/'.$match->Domicile->nomImgLogo.'', array('alt' => 'logo equipe domicile', 'style' => 'max-width: 40px; max-height:40px;')) . '
+                                 ' . __($match->Domicile->nomCourt.'<span class="pull-right" style="font-family: verdana;'.(($match->scoreEquipeDomicile<$match->scoreEquipeVisiteur)?'color: grey':'').'">'.$match->scoreEquipeDomicile.'</span></p><p>') .
+                                $this->Html->image('equipes/'.$match->Visiteur->nomImgLogo.'', array('alt' => 'logo equipe visiteur', 'style' => 'max-width: 40px; max-height:40px;')) . '
+                                 ' . __($match->Visiteur->nomCourt.'<span class="pull-right" style="font-family: verdana;'.(($match->scoreEquipeDomicile>$match->scoreEquipeVisiteur)?'color: grey':'').'">'.$match->scoreEquipeVisiteur.'</span>')
+                            .'</p>
+                        </div>',
+                        array ('controller' => 'Matchs',
+                                'action' => 'frontView', $match->id),
+                        array ('escape' => false,
+                                'style' => 'text-decoration: none'));
+                    ?>
+                </div>
+            </div>
+<?php endforeach; ?>
 </div>
-<div class="col-sm-8 col-sm-offset-2 main">
+<div class="col-sm-8 main">
 
-    <div class="related" style="padding-top : 7%">
+
+    <div class="related">
         <h3><a  href="http://www.francefootball.fr/news/Ligue-1-tous-les-resumes-de-la-35e-journee-de-ligue-1/655335" style="color : black">Ligue 1 : tous les résumés de la 35e journée de Ligue 1</a></h3>
             <?php echo 
                 $this->Html->image('articles/article1.jpg', array('style' => 'width : 75%'));  ?>  
@@ -49,6 +50,6 @@
     </div>
     <div class="related" style="padding-top : 7%">
         <h3><?= __('Acheter vos places pour les prochains matchs') ?></h3>
-              <a class="navbar-brand" href="http://www.fnacspectacles.com/place-spectacle/Sport/Football-p304283400729002095.htm">ici</a>
+              <a class="navbar-brand" href="http://www.fnacspectacles.com/place-spectacle/Sport/Football-p304283400729002095.htm">Ici !</a>
     </div>
 </div>

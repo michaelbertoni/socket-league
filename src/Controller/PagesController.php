@@ -66,7 +66,10 @@ class PagesController extends AppController
     public function home()
     {
         $this->loadModel('Matchs');
-        $recentMatchs = $this->Matchs->find('all', ['limit' => 10, 'order' => ['id' => 'DESC']]);
+        $recentMatchs = $this->Matchs->find()
+        ->contain(['Visiteur', 'Domicile', 'Journees', 'Journees.Competitions'])
+        ->limit(5)
+        ->order(['Matchs.id' => 'DESC']);
 
         $this->set([
             'matchs' => $recentMatchs
