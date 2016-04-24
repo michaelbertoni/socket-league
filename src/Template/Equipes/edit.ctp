@@ -17,14 +17,27 @@
     <fieldset>
         <legend><?= __('Edit Equipe') ?></legend>
         <?php
-            echo $this->Form->input('nomEquipe');
-            echo $this->Form->input('nomCourt');
-            echo $this->Form->input('presidentEquipe');
-            echo $this->Form->input('dateFondationEquipe');
-            echo $this->Form->input('entraineurEquipe');
-            echo $this->Form->input('competitions._ids', ['options' => $competitions]);
+        echo'<div class="col-md-4">';
+            echo $this->Form->input('nomEquipe', array('class' => 'form-control'));
+            echo $this->Form->input('nomCourt', array('class' => 'form-control'));
+            echo $this->Form->input('presidentEquipe', array('class' => 'form-control'));
+            echo $this->Form->input('dateFondationEquipe', array('class' => 'form-control'));
+            echo $this->Form->input('entraineurEquipe', array('class' => 'form-control'));
+            echo '<label>caca</label>';
+             echo  '<select multiple class="form-control" id="sel2">';
+             foreach($competitions as $competition) {
+                echo'<option value="'.$competition->id.'">'.$competition->nomCompetition.'</option>';
+             }
+             echo '</select>';
+        echo'</div>';
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <div class="col-md-offset-1" style="padding-top:15px;">
+        <?= $this->Form->button(__('Valider'),array('class' => 'btn btn-success', 'style' => 'padding-top:10px')) ?>
+    </div>
     <?= $this->Form->end() ?>
 </div>
+
+
+
+

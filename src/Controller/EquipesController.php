@@ -85,7 +85,7 @@ class EquipesController extends AppController
                 $this->Flash->error(__('The equipe could not be saved. Please, try again.'));
             }
         }
-        $competitions = $this->Equipes->Competitions->find('list', ['limit' => 200]);
+        $competitions = $this->Equipes->Competitions->find('all', ['limit' => 200]);
         $this->set(compact('equipe', 'competitions'));
         $this->set('_serialize', ['equipe']);
     }
