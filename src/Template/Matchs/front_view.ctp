@@ -1,5 +1,7 @@
 <div class="text-center" style="margin-bottom: 50px">
-	<h1><?= $match->journee->nomJournée ?> de <?= $match->journee->competition->nomCompetition ?></h1>
+	<h1><?= $this->Html->link('<h2>'.$match->journee->nomJournée.'</h2>', ['controller' => 'Journees', 'action' => 'resultats', $match->journee->id], ['escape' => false, 'style' => 'text-decoration: none']) ?></h1>
+	<h3>de</h3>
+	<h1><?= $this->Html->link('<h2>'.$match->journee->competition->nomCompetition.'</h2>', ['controller' => 'Competitions', 'action' => 'classement', $match->journee->competition->id], ['escape' => false, 'style' => 'text-decoration: none']) ?></h1>
 </div>
 
 <div class="row text-center">
