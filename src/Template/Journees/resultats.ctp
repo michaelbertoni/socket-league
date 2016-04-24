@@ -1,5 +1,5 @@
-<div class="container-fluid">
-    <div class="row-fluid">
+<div class="container">
+    <div class="row">
         <div class="col-xs-4">
             <h1><?= $competition->nomCompetition ?></h1>
             <h2><?= $journee->nomJournée ?></h2>
@@ -21,6 +21,9 @@
                 <a href="<?= $idJourneeNext['id'] ?>" class="btn btn-default"><span aria-hidden="true">&raquo;</span></a>
 
             </div>
+
+            <?php echo $this->Html->link('<button class="btn btn-success" style="margin-top:20px">Classement de la compétition</button>', array('controller' => 'Competitions', 'action' => 'classement', $competition->id), array ('escape' => false)); ?>
+
         </div>
                 <div class="col-xs-offset-4 col-xs-4" style="padding-bottom: 50px">
                     <?= $this->Html->image('competitions/'.$competition->nomImgLogo.'', array('alt' => 'logo compétition', 'class' => 'img-responsive pull-right', 'style' => "max-width: 150px")) ?>
@@ -29,7 +32,7 @@
 
     <?php $i = 0; ?>
     
-    <div class="row-fluid">
+    <div class="row">
         <?php foreach ($matchs as $match): ?>
             <div class="col-xs-4">
                 <div class="panel panel-default">
@@ -39,9 +42,9 @@
                     <?php echo $this->Html->link(
                         '<div class="panel-body h3" style="padding-left: 20px; padding-right: 40px; color: black">
                             <p>'.
-                                $this->Html->image('equipes/'.$match['logoDomicile'].'', array('alt' => 'logo equipe domicile')) . '
+                                $this->Html->image('equipes/'.$match['logoDomicile'].'', array('alt' => 'logo equipe domicile', 'style' => 'max-width: 40px; max-height:40px;')) . '
                                  ' . __($match->equipeDomicile.'<span class="pull-right" style="font-family: verdana;'.(($match->scoreDomicile<$match->scoreVisiteur)?'color: grey':'').'">'.$match->scoreDomicile.'</span></p><p>') .
-                                $this->Html->image('equipes/'.$match['logoVisiteur'].'', array('alt' => 'logo equipe visiteur')) . '
+                                $this->Html->image('equipes/'.$match['logoVisiteur'].'', array('alt' => 'logo equipe visiteur', 'style' => 'max-width: 40px; max-height:40px;')) . '
                                  ' . __($match->equipeVisiteur.'<span class="pull-right" style="font-family: verdana;'.(($match->scoreDomicile>$match->scoreVisiteur)?'color: grey':'').'">'.$match->scoreVisiteur.'</span>')
                             .'</p>
                         </div>',
@@ -53,7 +56,7 @@
                 </div>
             </div>
         <?php $i++;
-        if ($i%3 == 0) echo '</div><div class="row-fluid">';
+        if ($i%3 == 0) echo '</div><div class="row">';
         endforeach; ?>
     </div>
 </div>

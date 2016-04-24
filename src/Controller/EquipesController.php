@@ -35,7 +35,7 @@ class EquipesController extends AppController
     public function view($id = null)
     {
         $equipe = $this->Equipes->get($id, [
-            'contain' => ['Competitions']
+            'contain' => ['Competitions', 'Stades']
         ]);
 
         $this->set('equipe', $equipe);
@@ -59,7 +59,7 @@ class EquipesController extends AppController
                 $this->Flash->error(__('The equipe could not be saved. Please, try again.'));
             }
         }
-        $competitions = $this->Equipes->Competitions->find('list', ['limit' => 200]);
+        $competitions = $this->Equipes->Competitions->find('all', ['limit' => 200]);
         $this->set(compact('equipe', 'competitions'));
         $this->set('_serialize', ['equipe']);
     }

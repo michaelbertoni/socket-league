@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="col-sm-8 main col-sm-offset-2">
     <h4><?= __('Derniers matchs') ?></h4>
     <div class="related">
@@ -32,3 +33,7 @@
           <a class="navbar-brand" href="http://www.fnacspectacles.com/place-spectacle/Sport/Football-p304283400729002095.htm">ici</a>
     </div>
 </div>
+=======
+<?php
+debug($matchs);
+>>>>>>> 2a24a249d4874c38cc7a8bbc6b00818e265dc9d3
