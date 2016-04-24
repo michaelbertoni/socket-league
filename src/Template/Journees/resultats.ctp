@@ -49,7 +49,7 @@
                             .'</p>
                         </div>',
                         array ('controller' => 'Matchs',
-                                'action' => '', $match->id),
+                                'action' => 'frontView', $match->id),
                         array ('escape' => false,
                                 'style' => 'text-decoration: none'));
                     ?>

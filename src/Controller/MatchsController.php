@@ -105,4 +105,17 @@ class MatchsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function frontView($id = null)
+    {
+        $match = $this->Matchs->find()
+            ->contain([
+                'Visiteur', 'Domicile', 'Journees', 'Journees.Competitions'
+            ])
+            ->where(['Matchs.id' => $id])
+            ->first();
+
+        $this->set('match', $match);
+        $this->set('_serialize', ['match']);
+    }
 }
