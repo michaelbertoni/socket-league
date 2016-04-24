@@ -19,6 +19,8 @@ class CompetitionsController extends AppController
      */
     public function index()
     {
+        if(session_id() == "") {
+            session_start();}
         if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
             return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
         }
@@ -37,6 +39,8 @@ class CompetitionsController extends AppController
      */
     public function view($id = null)
     {
+        if(session_id() == "") {
+            session_start();}
         if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
             return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
         }
@@ -55,6 +59,8 @@ class CompetitionsController extends AppController
      */
     public function add()
     {
+        if(session_id() == "") {
+            session_start();}
         if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
             return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
         }
@@ -82,6 +88,8 @@ class CompetitionsController extends AppController
      */
     public function edit($id = null)
     {
+        if(session_id() == "") {
+            session_start();}
         if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
             return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
         }
@@ -111,6 +119,8 @@ class CompetitionsController extends AppController
      */
     public function delete($id = null)
     {
+        if(session_id() == "") {
+            session_start();}
         if(!isset($_SESSION['connected']) || $_SESSION['connected'] == 0) {
             return $this->redirect(array('controller' => 'Users', 'action' => 'viewlogin'));
         }
