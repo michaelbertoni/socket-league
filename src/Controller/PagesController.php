@@ -62,4 +62,14 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+    public function home()
+    {
+        $this->loadModel('Matchs');
+        $recentMatchs = $this->Matchs->find('all', ['limit' => 10, 'order' => ['Equipes.id' => 'DESC']]);
+
+        $this->set([
+            'matchs' => $recentMatchs
+        ]);
+    }
 }
