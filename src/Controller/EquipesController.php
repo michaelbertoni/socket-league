@@ -137,7 +137,7 @@ class EquipesController extends AppController
     public function detailequipe($id)
     {
         $equipe = $this->Equipes->get($id, [
-            'contain' => ['Stades']
+            'contain' => ['Stades', 'Matchs', 'Matchs.Domicile', 'Matchs.Visiteur', 'Matchs.Journees', 'Matchs.Journees.Competitions']
         ]);
 
         $this->set('equipefront', $equipe);
