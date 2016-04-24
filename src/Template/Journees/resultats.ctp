@@ -21,6 +21,9 @@
                 <a href="<?= $idJourneeNext['id'] ?>" class="btn btn-default"><span aria-hidden="true">&raquo;</span></a>
 
             </div>
+
+            <?php echo $this->Html->link('<button class="btn btn-success" style="margin-top:20px">Classement de la compétition</button>', array('controller' => 'Competitions', 'action' => 'classement', $competition->id), array ('escape' => false)); ?>
+
         </div>
                 <div class="col-xs-offset-4 col-xs-4" style="padding-bottom: 50px">
                     <?= $this->Html->image('competitions/'.$competition->nomImgLogo.'', array('alt' => 'logo compétition', 'class' => 'img-responsive pull-right', 'style' => "max-width: 150px")) ?>
