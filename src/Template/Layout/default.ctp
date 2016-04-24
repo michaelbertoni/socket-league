@@ -56,7 +56,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="listeCompetition/" />Competitions</a></li>
+            <li><a href="/socketleague/listeCompetition/"/>Competitions</a></li>
           </ul>
               <?php
                   if(session_id() == "") {

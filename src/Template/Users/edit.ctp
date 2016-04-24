@@ -21,7 +21,7 @@
             ?>
         </fieldset>
         <div style="padding-top:10px;">
-            <?= $this->Form->button(__('Submit'), array('class' => 'btn btn-success')) ?>
+            <?= $this->Form->button(__('Valider'), array('class' => 'btn btn-success')) ?>
         </div>
     </div>
     <?= $this->Form->end() ?>
