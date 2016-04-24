@@ -23,13 +23,10 @@
             echo $this->Form->input('presidentEquipe', array('class' => 'form-control'));
             echo $this->Form->input('dateFondationEquipe', array('class' => 'form-control'));
             echo $this->Form->input('entraineurEquipe', array('class' => 'form-control'));
-            echo '<label>caca</label>';
-             echo  '<select multiple class="form-control" id="sel2">';
-             foreach($competitions as $competition) {
-                echo'<option value="'.$competition->id.'">'.$competition->nomCompetition.'</option>';
-             }
-             echo '</select>';
-        echo'</div>';
+            foreach ($competitions as $compet):
+                $competList[$compet->id] = $compet->nomCompetition;
+            endforeach;
+            echo $this->Form->input('competitions._ids', ['options' => $competList, 'class' => 'form-control']);
         ?>
     </fieldset>
     <div class="col-md-offset-1" style="padding-top:15px;">
