@@ -42,7 +42,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -50,29 +50,31 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><?= $this->fetch('title') ?></a>
+          <a class="navbar-brand" href="/socketleague">Accueil</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Back-Office<span class="caret" style="margin-left: 5px"></span></a>
-          <ul class="dropdown-menu">
-            <li><?php echo $this->Html->link('Equipes',array ('controller' => 'Equipes','action' => 'index')); ?></li>
-            <li><?php echo $this->Html->link('Stades',array ('controller' => 'Stades','action' => 'index')); ?></li>
-            <li><?php echo $this->Html->link('Competitions',array ('controller' => 'Competitions','action' => 'index')); ?></li>
-            <li><?php echo $this->Html->link('Journees',array ('controller' => 'Journees','action' => 'index')); ?></li>
-            <li><?php echo $this->Html->link('Matchs',array ('controller' => 'Matchs','action' => 'index')); ?></li>
-            <li><?php echo $this->Html->link('Users',array ('controller' => 'Users','action' => 'index')); ?></li>
+              <div class="col-md-9 ul-header">
+                    <ul class="ul-header">
+                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Equipes',array ('controller' => 'Equipes','action' => 'index')); ?></li>
+                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Stades',array ('controller' => 'Stades','action' => 'index')); ?></li>
+                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Competitions',array ('controller' => 'Competitions','action' => 'index')); ?></li>
+                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Journees',array ('controller' => 'Journees','action' => 'index')); ?></li>
+                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Matchs',array ('controller' => 'Matchs','action' => 'index')); ?></li>
+                        <li class="navbar-brand" style="list-style-type: none"><?php echo $this->Html->link('Users',array ('controller' => 'Users','action' => 'index')); ?></li>
+                    </ul>
+                </div>
 
-          </ul>
-        </li>
-          </ul>
+                      <div class="col-md-offset-1 col-md-1 form-group" style="padding:0">
+                <a href="#" class="navbar-brand" >
+                    <span class="glyphicon glyphicon-user btn-lg a-navbar"></span>
+                </a>
+            </div>
         </div>
       </div>
     </nav>
     
     <?= $this->Flash->render() ?>
-    <div class="container" style="padding-top: 100px;">
+    <div class="container-fluid" style="padding-top: 100px;">
         <?= $this->fetch('content') ?>
     </div>
     <footer>
