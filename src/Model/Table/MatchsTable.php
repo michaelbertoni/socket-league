@@ -28,16 +28,20 @@ class MatchsTable extends Table
         $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->belongsTo('Equipes', [
-            'foreignKey' => 'EquipeDomicile_idEquipe'
+        $this->belongsTo('Domicile', [
+            'className' => 'Equipes',
+            'foreignKey' => 'EquipeDomicile_idEquipe',
+            'propertyName' => 'Domicile'
         ]);
 
-        $this->belongsTo('Equipes', [
-            'foreignKey' => 'EquipeVisiteur_idEquipe'
+        $this->belongsTo('Visiteur', [
+            'className' => 'Equipes',
+            'foreignKey' => 'EquipeVisiteur_idEquipe',
+            'propertyName' => 'Visiteur'
         ]);
 
         $this->belongsTo('Journees', [
-            'foreignKey' => 'Journee_idJournee'
+            'foreignKey' => 'Journée_idJournée'
         ]);
     }
 
