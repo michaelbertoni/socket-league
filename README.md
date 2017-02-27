@@ -2,8 +2,6 @@
 
 ## Installation
 
-`git clone https://gitlab.com/michaelbertoni/SocketLeague.git`
-
 Ajouter l'alias Apache :
 
 ```
